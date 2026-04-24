@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research &amp; Publications | Richard Kudjo Akrong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080d14;
+      --bg2:       #0e1520;
+      --bg3:       #131c2b;
+      --gold:      #c8a96e;
+      --gold-dim:  #8a7248;
+      --white:     #f0ece3;
+      --muted:     #7a8499;
+      --border:    #1e2d42;
+      --accent:    #2563a8;
+      --font-head: 'Fraunces', Georgia, serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(8, 13, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      height: 62px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active {
+      color: var(--white);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 130px 2rem 4rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37, 99, 168, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 168, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .page-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .page-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .page-intro {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    /* SECTIONS */
+    section { padding: 4.5rem 2rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    /* PAPER CARD */
+    .paper-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      transition: border-color 0.25s;
+    }
+
+    .paper-card:hover { border-color: var(--gold-dim); }
+
+    .paper-card-header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .paper-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--gold);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.35rem 0.6rem;
+      flex-shrink: 0;
+      letter-spacing: 0.08em;
+    }
+
+    .paper-journal {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .paper-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold-dim);
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .paper-card-body {
+      padding: 2rem;
+      background: var(--bg);
+    }
+
+    .paper-title {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 1rem;
+    }
+
+    .paper-abstract {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .paper-abstract strong { color: var(--white); font-weight: 600; }
+
+    .paper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .meta-chip {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3rem 0.7rem;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .meta-chip span { color: var(--white); }
+
+    .paper-doi {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 0.3rem 0.75rem;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 0.25rem;
+    }
+
+    .paper-doi:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    /* KEY FINDINGS */
+    .findings {
+      margin: 1.5rem 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .finding-chip {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--gold);
+      border-radius: 3px;
+      padding: 0.9rem 1rem;
+    }
+
+    .finding-chip .fv {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .finding-chip .fl {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* DIVIDER */
+    hr.section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* SERVICE SECTION */
+    .service-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .service-card:hover { border-color: var(--gold-dim); }
+
+    .service-icon {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--gold);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3rem 0.5rem;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+      margin-top: 0.1rem;
+    }
+
+    .service-card h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+      font-family: var(--font-body);
+    }
+
+    .service-card p {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* RESEARCH SCOPE BANNER */
+    .scope-banner {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .scope-banner p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .scope-banner strong { color: var(--white); }
+
+    /* PAGE NAV */
+    .page-nav {
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .page-nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .page-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+
+    .page-nav a:hover { opacity: 0.7; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.74rem; }
+      .findings { grid-template-columns: 1fr 1fr; }
+      .paper-card-header { flex-wrap: wrap; gap: 0.75rem; }
+      .paper-date { margin-left: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .findings { grid-template-columns: 1fr; }
+      .nav-links { gap: 0.6rem; }
+      .nav-links a { font-size: 0.68rem; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-tag   { animation: fadeUp 0.45s ease both 0.1s; }
+    h1          { animation: fadeUp 0.45s ease both 0.2s; }
+    .page-intro { animation: fadeUp 0.45s ease both 0.32s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">RKA</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="frameworks.html">Frameworks</a></li>
+      <li><a href="research.html" class="active">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-bg"></div>
+    <div class="page-header-inner">
+      <div class="page-tag">Academic Contributions</div>
+      <h1>Research &amp; <span>Publications</span></h1>
+      <p class="page-intro">
+        Peer-reviewed work across power distribution automation, industrial energy management,
+        and critical infrastructure systems. All publications draw directly from field experience
+        across 28 projects in 13 countries.
+      </p>
+    </div>
+  </div>
+
+  <!-- PUBLISHED PAPERS -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">Published Papers</div>
+      <h2>Peer-Reviewed Publications</h2>
+
+      <div class="scope-banner">
+        <p>
+          Both papers were published in <strong>October 2025</strong> and address areas of
+          direct national importance: modernizing U.S. power infrastructure and aligning
+          industrial energy use with federal climate goals. Each paper draws on
+          <strong>over 15 years of documented field practice</strong> across industrial
+          deployments in Africa, Southeast Asia, and the United States.
+        </p>
+      </div>
+
+      <!-- PAPER 1 -->
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-num">PUB-01</span>
+          <span class="paper-journal">International Journal of Innovative Science and Research Technology (IJISRT)</span>
+          <span class="paper-date">October 2025</span>
+        </div>
+        <div class="paper-card-body">
+          <div class="paper-title">
+            Automation in the Modern Power Distribution System: Improving Energy Security and Efficiency
+          </div>
+          <p class="paper-abstract">
+            This paper examines automation as a solution for improving <strong>energy security,
+            operational efficiency, and grid reliability</strong> in modern U.S. power distribution
+            systems. It covers automated transformers, Medium Voltage Distribution (MVD) systems,
+            Low Voltage (LV) panels, and Power Factor Correction (PFC) systems, and demonstrates
+            how real-time data analytics and intelligent control algorithms reduce technical losses,
+            cut outage duration, and improve field safety. Findings from the author's own industrial
+            deployments are presented alongside federal energy modernization data, placing the
+            technical contributions directly within the context of U.S. grid policy priorities.
+          </p>
+
+          <div class="findings">
+            <div class="finding-chip">
+              <div class="fv">&lt;5%</div>
+              <div class="fl">Technical losses in automated grids, down from 11-13%</div>
+            </div>
+            <div class="finding-chip">
+              <div class="fv">40%</div>
+              <div class="fl">Reduction in outage duration (SAIDI index)</div>
+            </div>
+            <div class="finding-chip">
+              <div class="fv">30%</div>
+              <div class="fl">Decline in field safety incidents post-deployment</div>
+            </div>
+          </div>
+
+          <div class="paper-meta" style="margin-top: 1.5rem;">
+            <div class="meta-chip">ISSN <span>2456-2165</span></div>
+            <div class="meta-chip">Vol <span>10, Issue 10</span></div>
+            <div class="meta-chip">Pages <span>1040-1042</span></div>
+            <div class="meta-chip">Published <span>18 October 2025</span></div>
+          </div>
+          <div style="margin-top: 1rem;">
+            <a class="paper-doi" href="https://doi.org/10.38124/ijisrt/25oct515" target="_blank" rel="noopener">
+              &#8599; DOI: 10.38124/ijisrt/25oct515
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAPER 2 -->
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-num">PUB-02</span>
+          <span class="paper-journal">Global Journal of Engineering and Technology (GJET)</span>
+          <span class="paper-date">October 2025</span>
+        </div>
+        <div class="paper-card-body">
+          <div class="paper-title">
+            Automation as a Driver of Sustainable Development: Aligning Industrial Energy Use with National Climate Goals
+          </div>
+          <p class="paper-abstract">
+            This paper explores how <strong>industrial automation and digitalization</strong> enable
+            the United States to meet its greenhouse gas emission reduction targets while preserving
+            industrial competitiveness. Drawing on IoT sensor integration, predictive analytics,
+            and intelligent process optimization, the paper demonstrates that environmental
+            performance and economic output are not in conflict. Case studies from industrial
+            installations show measurable reductions in emissions, energy use, and production
+            waste, all achieved through automation rather than operational slowdown.
+            The paper directly addresses U.S. Department of Energy emission reduction priorities
+            and positions engineering expertise as central to national climate strategy.
+          </p>
+
+          <div class="findings">
+            <div class="finding-chip">
+              <div class="fv">42%</div>
+              <div class="fl">Reduction in greenhouse gas emissions via automation</div>
+            </div>
+            <div class="finding-chip">
+              <div class="fv">20%</div>
+              <div class="fl">Reduction in industrial energy consumption</div>
+            </div>
+            <div class="finding-chip">
+              <div class="fv">16%</div>
+              <div class="fl">Increase in production output alongside emission cuts</div>
+            </div>
+          </div>
+
+          <div class="paper-meta" style="margin-top: 1.5rem;">
+            <div class="meta-chip">ISSN <span>2583-3359</span></div>
+            <div class="meta-chip">Vol <span>4, Issue 10</span></div>
+            <div class="meta-chip">Pages <span>10-13</span></div>
+            <div class="meta-chip">Published <span>17 October 2025</span></div>
+          </div>
+          <div style="margin-top: 1rem;">
+            <a class="paper-doi" href="https://gsarpublishers.com/journal-gjet-home/" target="_blank" rel="noopener">
+              &#8599; Global Journal of Engineering and Technology
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ACADEMIC SERVICE -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">Academic Service</div>
+      <h2>Contributions to the Research Community</h2>
+      <div class="service-grid">
+
+        <div class="service-card">
+          <span class="service-icon">REVIEW</span>
+          <div>
+            <h3>Peer Reviewer &mdash; ISA Transactions (Elsevier)</h3>
+            <p>
+              Invited by ISA Transactions to evaluate submitted manuscripts in industrial
+              automation and control systems. This role places independent judgment at
+              the gate of what advances the published engineering knowledge base.
+              Confirmed by Elsevier Certificate of Reviewing.
+            </p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">JUDGE</span>
+          <div>
+            <h3>Science &amp; Engineering Fair Judge &mdash; Virginia State</h3>
+            <p>
+              Serving as an evaluator for the Virginia State Science and Engineering Fair,
+              assessing student research projects at the regional level.
+              Reflects a direct contribution to STEM advancement in the United States
+              beyond professional and academic practice. Confirmed by Certificate of Appreciation.
+            </p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">MSc</span>
+          <div>
+            <h3>MSc Thesis Research &mdash; American National University</h3>
+            <p>
+              Current thesis research applies explainable AI to SCADA cybersecurity
+              in critical infrastructure protection. This work addresses a documented
+              gap in U.S. industrial security policy and extends the author's field
+              expertise into a formal academic contribution with direct policy relevance.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE NAV -->
+  <div class="page-nav">
+    <div class="page-nav-inner">
+      <a href="frameworks.html">&#8592; Frameworks</a>
+      <a href="projects.html">Global Projects &#8594;</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Richard Kudjo Akrong &nbsp;|&nbsp; Former Technical Managing Director, Casabeck Engineering Services
+      &nbsp;|&nbsp; <a href="contact.html">Contact</a></p>
+    <p style="margin-top:0.5rem; font-size: 0.7rem; opacity: 0.5;">Woodbridge, Virginia, USA</p>
+  </footer>
+
+</body>
+</html>
