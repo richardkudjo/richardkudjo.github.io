@@ -167,6 +167,168 @@
       line-height: 1.2;
     }
 
+    /* IMAGE GALLERY */
+    .gallery-section { padding: 3rem 2rem; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid.four-col { grid-template-columns: repeat(4, 1fr); }
+
+    .gallery-item {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg2);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--gold-dim);
+      transform: translateY(-2px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.2s;
+    }
+
+    .gallery-item:hover img { opacity: 0.85; }
+
+    .gallery-caption {
+      padding: 0.65rem 0.85rem;
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+    }
+
+    .gallery-caption .gc-tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .gallery-caption .gc-title {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 8, 14, 0.96);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lightbox.active { display: flex; flex-direction: column; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .lightbox-caption {
+      margin-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 2px;
+    }
+
+    /* TRAINING PHOTO */
+    .training-block {
+      margin-top: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+    }
+
+    .training-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .training-text {
+      padding: 1.75rem;
+      background: var(--bg2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .training-text .tt-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .training-text h4 {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .training-text p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid.four-col { grid-template-columns: repeat(2, 1fr); }
+      .training-block { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
     /* TOP STATS BAR */
     .stats-bar {
       background: var(--bg2);
@@ -620,6 +782,13 @@
 </head>
 <body>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-close" onclick="closeLightbox()">&#x2715; Close</div>
+    <img id="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="index.html">RKA</a>
@@ -742,6 +911,51 @@
               <div class="ov">20%</div>
               <div class="ol">Reduction in operating costs through engineering standardization across 14 sites.</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- FOOD PRODUCTION GALLERY -->
+  <section class="gallery-section">
+    <div class="section-inner">
+      <div class="section-label">Field Photography</div>
+      <h2>Food Production Automation</h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:640px;line-height:1.85;margin-bottom:0.5rem;">
+        SCADA interfaces and control architectures from margarine, rice processing,
+        and edible oils facilities. All systems built on Siemens S7-1500 and
+        Allen-Bradley platforms, identical to those used in U.S. food manufacturing.
+      </p>
+      <div class="gallery-grid four-col">
+        <div class="gallery-item" onclick="openLightbox('images/food-1-margarine-architecture.jpg','Integrated Automation Architecture — Margarine Production Facility')">
+          <img src="images/food-1-margarine-architecture.jpg" alt="Margarine Production Automation Architecture" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gc-tag">Fig 1.1.1</div>
+            <div class="gc-title">Margarine Plant Automation Architecture</div>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/food-2-tank-monitoring.jpg','Live Production Storage — Real-Time Tank Monitoring')">
+          <img src="images/food-2-tank-monitoring.jpg" alt="Real-Time Tank Monitoring SCADA" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gc-tag">Fig 1.1.2</div>
+            <div class="gc-title">Real-Time Tank Monitoring</div>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/food-3-rice-scada.jpg','Rice Plant SCADA — Network and Control Architecture')">
+          <img src="images/food-3-rice-scada.jpg" alt="Rice Plant SCADA" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gc-tag">Fig 1.2.2</div>
+            <div class="gc-title">Rice Plant SCADA Control</div>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/food-4-edible-oils-utilities.jpg','Edible Oils — Utilities Monitoring Dashboard')">
+          <img src="images/food-4-edible-oils-utilities.jpg" alt="Edible Oils Utilities Monitoring" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gc-tag">Fig 1.3.3</div>
+            <div class="gc-title">Edible Oils Utilities Monitoring</div>
           </div>
         </div>
       </div>
@@ -910,6 +1124,120 @@
 
   <hr class="section-divider" />
 
+  <!-- ENERGY & IECEX GALLERY -->
+  <section class="gallery-section">
+    <div class="section-inner">
+      <div class="section-label">Energy Management &amp; Hazardous Area Systems</div>
+      <h2>Energy, Solar &amp; IECEx Deployments</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('images/iecex-1-control-architecture.jpg','IECEx Control System Architecture — Explosion-Proof Design')">
+          <img src="images/iecex-1-control-architecture.jpg" alt="IECEx Control Architecture" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.1.1</div><div class="gc-title">IECEx Control System Architecture</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/iecex-2-electrical-distribution.jpg','Hazardous Area Electrical Distribution — Explosion-Proof Equipment')">
+          <img src="images/iecex-2-electrical-distribution.jpg" alt="Hazardous Electrical Distribution" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.1.2</div><div class="gc-title">Hazardous Area Electrical Distribution</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/iecex-3-plant-layout.jpg','Hazardous Plant — Complete System Layout')">
+          <img src="images/iecex-3-plant-layout.jpg" alt="Hazardous Plant Layout" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.1.3</div><div class="gc-title">Hazardous Plant System Layout</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/iecex-4-plc-layout.jpg','PLC System Layout — Safety Controller Configuration')">
+          <img src="images/iecex-4-plc-layout.jpg" alt="PLC Safety Controller" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.1.4</div><div class="gc-title">PLC Safety Controller Configuration</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/iecex-5-field-equipment.jpg','IECEx Field Equipment — Installed Explosion-Proof Motors')">
+          <img src="images/iecex-5-field-equipment.jpg" alt="Explosion-Proof Field Equipment" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.1.5</div><div class="gc-title">IECEx Explosion-Proof Field Equipment</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/iecex-6-hexane-scada.jpg','Hexane Plant — Process Control SCADA')">
+          <img src="images/iecex-6-hexane-scada.jpg" alt="Hexane Plant SCADA" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.1.6</div><div class="gc-title">Hexane Plant Process Control SCADA</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/solar-2-realtime-monitoring.jpg','Solar System — Real-Time Energy Monitoring')">
+          <img src="images/solar-2-realtime-monitoring.jpg" alt="Solar Real-Time Monitoring" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.2.2</div><div class="gc-title">Solar Energy Real-Time Monitoring</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/solar-3-grid-comparison.jpg','Solar vs Grid — Energy Source Comparison Dashboard')">
+          <img src="images/solar-3-grid-comparison.jpg" alt="Solar vs Grid Comparison" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.2.3</div><div class="gc-title">Solar vs Grid Energy Comparison</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/biomass-3-efficiency-dashboard.jpg','Biomass Boiler — Efficiency Dashboard')">
+          <img src="images/biomass-3-efficiency-dashboard.jpg" alt="Biomass Boiler Efficiency" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 2.3.3</div><div class="gc-title">Biomass Boiler Efficiency Dashboard</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SAFETY GALLERY -->
+  <section class="gallery-section">
+    <div class="section-inner">
+      <div class="section-label">Safety &amp; Environmental Systems</div>
+      <h2>Safety, Compliance &amp; Tank Management</h2>
+      <div class="gallery-grid four-col">
+        <div class="gallery-item" onclick="openLightbox('images/safety-1-wastewater-control.jpg','Wastewater Treatment — Process Control Interface')">
+          <img src="images/safety-1-wastewater-control.jpg" alt="Wastewater Treatment Control" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 3.2.1</div><div class="gc-title">Wastewater Treatment Control</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/safety-2-chemical-dosing.jpg','Chemical Treatment — Automated Dosing Control')">
+          <img src="images/safety-2-chemical-dosing.jpg" alt="Chemical Dosing Control" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 3.2.2</div><div class="gc-title">Chemical Treatment Dosing Control</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/safety-3-dewatering-dashboard.jpg','Effluent Compliance — Dewatering System Dashboard')">
+          <img src="images/safety-3-dewatering-dashboard.jpg" alt="Dewatering Compliance Dashboard" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 3.2.3</div><div class="gc-title">Effluent Compliance Dashboard</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/safety-4-tank-inventory.jpg','Tank Farm — Real-Time Inventory Monitoring')">
+          <img src="images/safety-4-tank-inventory.jpg" alt="Tank Farm Inventory Monitoring" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 3.3.1</div><div class="gc-title">Tank Farm Inventory Monitoring</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- PIMS GALLERY -->
+  <section class="gallery-section">
+    <div class="section-inner">
+      <div class="section-label">PIMS &amp; Predictive Maintenance</div>
+      <h2>Enterprise Systems Across 14 Facilities</h2>
+      <div class="gallery-grid four-col">
+        <div class="gallery-item" onclick="openLightbox('images/pims-0-overview.jpg','PIMS — Multi-Facility Management Overview')">
+          <img src="images/pims-0-overview.jpg" alt="PIMS Multi-Facility Overview" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 4.1.0</div><div class="gc-title">Multi-Facility PIMS Overview</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/pims-2-kpi-dashboard.jpg','KPI Tracking — Performance Metrics Dashboard')">
+          <img src="images/pims-2-kpi-dashboard.jpg" alt="KPI Performance Dashboard" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 4.1.2</div><div class="gc-title">KPI Performance Dashboard</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/pims-3-performance.jpg','Facility Performance — Operational Metrics')">
+          <img src="images/pims-3-performance.jpg" alt="Facility Performance Metrics" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 4.1.3</div><div class="gc-title">Facility Performance Metrics</div></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('images/pims-predictive-alerts.jpg','Predictive Alerts — Equipment Health Monitoring')">
+          <img src="images/pims-predictive-alerts.jpg" alt="Predictive Maintenance Alerts" loading="lazy" />
+          <div class="gallery-caption"><div class="gc-tag">Fig 4.2.2</div><div class="gc-title">Predictive Equipment Health Alerts</div></div>
+        </div>
+      </div>
+
+      <!-- TRAINING PHOTO -->
+      <div class="training-block" style="margin-top:1.5rem;">
+        <img src="images/training-photo.jpg" alt="Hands-on Engineering Training" loading="lazy" />
+        <div class="training-text">
+          <div class="tt-label">Domain 05 &mdash; Implementation &amp; Training</div>
+          <h4>Hands-On Training of Engineers and Technicians</h4>
+          <p>Over 60 engineers and technicians trained across multiple countries in PLC programming, SCADA systems, vibration analysis, and alarm management. Skills were sustained well after initial deployment, confirming the long-term knowledge transfer value of the program.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
   <!-- INDEPENDENT VALIDATION -->
   <section class="validation-section">
     <div class="section-inner">
@@ -1021,5 +1349,21 @@
     <p style="margin-top:0.5rem; font-size: 0.7rem; opacity: 0.5;">Woodbridge, Virginia, USA</p>
   </footer>
 
+  <script>
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.getElementById('lightbox-img').src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
