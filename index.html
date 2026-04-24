@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Richard Kudjo Akrong | Industrial Automation & Secure Infrastructure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080d14;
+      --bg2:       #0e1520;
+      --bg3:       #131c2b;
+      --gold:      #c8a96e;
+      --gold-dim:  #8a7248;
+      --white:     #f0ece3;
+      --muted:     #7a8499;
+      --border:    #1e2d42;
+      --accent:    #2563a8;
+      --font-head: 'Fraunces', Georgia, serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(8, 13, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      height: 62px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--white); }
+
+    .nav-links a.active {
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37, 99, 168, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 168, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%; left: -10%;
+      width: 60vw; height: 60vw;
+      background: radial-gradient(circle, rgba(37, 99, 168, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 1.5rem 0 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #080d14;
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: #e0be88; transform: translateY(-1px); }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── CREDENTIAL BAR ── */
+    .cred-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      overflow: hidden;
+    }
+
+    .cred-bar-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cred-item {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cred-item::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 0.6rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .lead {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.85;
+    }
+
+    /* ── ENDEAVOR SECTION ── */
+    .endeavor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .endeavor-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+
+    .endeavor-card:hover { border-color: var(--gold-dim); }
+
+    .endeavor-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
+    }
+
+    .card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .endeavor-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .endeavor-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── METRICS ── */
+    .metrics-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .metric-item {
+      text-align: center;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg3);
+      transition: border-color 0.2s;
+    }
+
+    .metric-item:hover { border-color: var(--gold-dim); }
+
+    .metric-num {
+      font-family: var(--font-head);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+    }
+
+    /* ── NATIONAL IMPORTANCE ── */
+    .importance-list {
+      margin-top: 2.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .importance-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .importance-item:hover { border-color: var(--gold-dim); }
+
+    .importance-icon {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3rem 0.5rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      letter-spacing: 0.05em;
+    }
+
+    .importance-text strong {
+      display: block;
+      color: var(--white);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .importance-text span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PAGE LINKS ── */
+    .page-links {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .page-link-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .page-link-card:hover {
+      border-color: var(--gold-dim);
+      background: var(--bg2);
+    }
+
+    .plc-left .plc-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .plc-left .plc-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .plc-arrow {
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.74rem; }
+      .endeavor-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .page-links { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 0.6rem; }
+    }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-tag   { animation: fadeUp 0.5s ease both; animation-delay: 0.1s; }
+    h1          { animation: fadeUp 0.5s ease both; animation-delay: 0.2s; }
+    .hero-subtitle { animation: fadeUp 0.5s ease both; animation-delay: 0.35s; }
+    .hero-cta-row  { animation: fadeUp 0.5s ease both; animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">RKA</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="frameworks.html">Frameworks</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-tag">Electrical Engineer &amp; Industrial Automation Specialist</div>
+      <h1>Richard<br>Kudjo <span>Akrong</span></h1>
+      <p class="hero-subtitle">
+        Advancing intelligent automation and secure system architectures
+        for U.S. industrial and critical infrastructure. Developer of the AOMS
+        and ICM proprietary frameworks, field-tested across 28 projects in 13 countries.
+      </p>
+      <div class="hero-cta-row">
+        <a href="frameworks.html" class="btn-primary">View Frameworks</a>
+        <a href="research.html" class="btn-secondary">Research &amp; Publications</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIAL BAR -->
+  <div class="cred-bar">
+    <div class="cred-bar-inner">
+      <span class="cred-item">IEEE Senior Member</span>
+      <span class="cred-item">ISA Senior Member</span>
+      <span class="cred-item">IECEx Certified</span>
+      <span class="cred-item">OSHA Certified</span>
+      <span class="cred-item">28 Projects</span>
+      <span class="cred-item">13 Countries</span>
+      <span class="cred-item">15+ Years Experience</span>
+      <span class="cred-item">MSc MSc Candidate &mdash; American National Universitymdash; American National University</span>
+    </div>
+  </div>
+
+  <!-- PROPOSED ENDEAVOR -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">Proposed Endeavor</div>
+      <h2>Two Frameworks.<br>One National Mission.</h2>
+      <p class="lead">
+        My work centers on two proprietary systems designed to solve specific,
+        high-cost problems in U.S. industrial infrastructure.
+        Both frameworks are active, peer-reviewed, and field-tested.
+      </p>
+      <div class="endeavor-grid">
+        <div class="endeavor-card">
+          <div class="card-tag">Framework 01</div>
+          <h3>AOMS</h3>
+          <p>
+            The Automated Operations Management System delivers predictive maintenance
+            for U.S. small and medium-sized food manufacturing enterprises. Structured
+            around ISO 13374 condition monitoring architecture, AOMS reduces unplanned
+            downtime by 40 to 45% and has improved Overall Equipment Effectiveness
+            from 68% to 87% across field deployments, sustaining that performance
+            over a six-year operational record.
+          </p>
+        </div>
+        <div class="endeavor-card">
+          <div class="card-tag">Framework 02</div>
+          <h3>ICM</h3>
+          <p>
+            The Integrated Competitiveness Model maps six operational domains
+            to bridge Industry 4.0 and Industry 5.0 adoption in manufacturing.
+            ICM gives plant operators a structured path to digital transformation
+            without replacing existing infrastructure. It targets efficiency gaps
+            that cost U.S. manufacturers billions annually.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="metrics-section">
+    <div class="section-inner">
+      <div class="section-label">Measured Impact</div>
+      <h2>Results Backed by Data</h2>
+      <div class="metrics-grid">
+        <div class="metric-item">
+          <div class="metric-num">87%</div>
+          <div class="metric-label">OEE Achieved, Up from 68% Baseline</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num">45%</div>
+          <div class="metric-label">Reduction in Unplanned Downtime</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num">28</div>
+          <div class="metric-label">Projects Completed Globally</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num">60+</div>
+          <div class="metric-label">Engineers Trained Across Multiple Countries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NATIONAL IMPORTANCE -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">National Importance</div>
+      <h2>Why This Work Matters<br>to the United States</h2>
+      <div class="importance-list">
+        <div class="importance-item">
+          <span class="importance-icon">SEC-01</span>
+          <div class="importance-text">
+            <strong>Critical Infrastructure Resilience</strong>
+            <span>
+              U.S. food manufacturing and industrial systems face growing cybersecurity
+              exposure and operational fragility. AOMS and ICM provide a tested,
+              scalable response to both threats simultaneously.
+            </span>
+          </div>
+        </div>
+        <div class="importance-item">
+          <span class="importance-icon">SEC-02</span>
+          <div class="importance-text">
+            <strong>SCADA Cybersecurity for Industrial Control Systems</strong>
+            <span>
+              My MSc thesis at American National University applies explainable AI
+              to SCADA cybersecurity, addressing a documented gap in critical
+              infrastructure protection that directly supports federal cybersecurity priorities.
+            </span>
+          </div>
+        </div>
+        <div class="importance-item">
+          <span class="importance-icon">SEC-03</span>
+          <div class="importance-text">
+            <strong>Knowledge Transfer at National Scale</strong>
+            <span>
+              Through peer-reviewed publication, science fair judging, and academic peer review
+              at ISA Transactions, this work feeds directly into the U.S. engineering
+              knowledge base rather than staying within one company or region.
+            </span>
+          </div>
+        </div>
+        <div class="importance-item">
+          <span class="importance-icon">SEC-04</span>
+          <div class="importance-text">
+            <strong>Food Supply Chain Reliability</strong>
+            <span>
+              AOMS targets unplanned equipment failure in food processing plants.
+              Supply chain disruptions in this sector carry direct public health consequences.
+              Reducing that risk through predictive automation is a measurable national benefit.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE LINKS -->
+  <section style="padding-top: 2rem; padding-bottom: 5rem;">
+    <div class="section-inner">
+      <div class="section-label">Explore Further</div>
+      <h2>Everything in One Place</h2>
+      <div class="page-links">
+        <a href="about.html" class="page-link-card">
+          <div class="plc-left">
+            <div class="plc-label">Background</div>
+            <div class="plc-title">About Richard Akrong</div>
+          </div>
+          <span class="plc-arrow">&#8594;</span>
+        </a>
+        <a href="frameworks.html" class="page-link-card">
+          <div class="plc-left">
+            <div class="plc-label">Proprietary IP</div>
+            <div class="plc-title">AOMS &amp; ICM Frameworks</div>
+          </div>
+          <span class="plc-arrow">&#8594;</span>
+        </a>
+        <a href="research.html" class="page-link-card">
+          <div class="plc-left">
+            <div class="plc-label">Academic Work</div>
+            <div class="plc-title">Publications &amp; Research</div>
+          </div>
+          <span class="plc-arrow">&#8594;</span>
+        </a>
+        <a href="projects.html" class="page-link-card">
+          <div class="plc-left">
+            <div class="plc-label">Field Deployments</div>
+            <div class="plc-title">Global Projects</div>
+          </div>
+          <span class="plc-arrow">&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Richard Kudjo Akrong &nbsp;|&nbsp; Former Technical Managing Director, Casabeck Engineering Services
+      &nbsp;|&nbsp; <a href="contact.html">Contact</a></p>
+    <p style="margin-top:0.5rem; font-size: 0.7rem; opacity: 0.5;">
+      Woodbridge, Virginia, USA
+    </p>
+  </footer>
+
+</body>
+</html>
