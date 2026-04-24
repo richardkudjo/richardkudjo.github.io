@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Richard Kudjo Akrong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080d14;
+      --bg2:       #0e1520;
+      --bg3:       #131c2b;
+      --gold:      #c8a96e;
+      --gold-dim:  #8a7248;
+      --white:     #f0ece3;
+      --muted:     #7a8499;
+      --border:    #1e2d42;
+      --accent:    #2563a8;
+      --font-head: 'Fraunces', Georgia, serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(8, 13, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      height: 62px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active {
+      color: var(--white);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 130px 2rem 4rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37, 99, 168, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 168, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .page-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .page-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .page-intro {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; }
+
+    .section-inner { max-width: 900px; margin: 0 auto; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    /* SUMMARY BLOCK */
+    .summary-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 2rem 2.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .summary-block p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .summary-block p:last-child { margin-bottom: 0; }
+
+    .summary-block strong { color: var(--white); font-weight: 600; }
+
+    /* CREDENTIALS GRID */
+    .cred-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .cred-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .cred-card:hover { border-color: var(--gold-dim); }
+
+    .cred-icon {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--gold);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.35rem 0.5rem;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+      margin-top: 0.1rem;
+    }
+
+    .cred-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .cred-text span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      margin-top: 2rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.5rem; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 2.5rem 2rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -0.35rem;
+      top: 0.5rem;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-role {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-org {
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    /* EDUCATION */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .edu-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      transition: border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .edu-card:hover { border-color: var(--gold-dim); }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .edu-degree {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+
+    .edu-school {
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .edu-detail {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* SERVICE */
+    .service-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .service-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .service-item:hover { border-color: var(--gold-dim); }
+
+    .service-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--gold);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3rem 0.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .service-text strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .service-text span {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* GLOBAL FOOTPRINT */
+    .footprint-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .stat-box {
+      text-align: center;
+      padding: 2rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg3);
+    }
+
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.5;
+    }
+
+    .country-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .country-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3rem 0.7rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* NAV FOOTER */
+    .page-nav {
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .page-nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .page-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+
+    .page-nav a:hover { opacity: 0.7; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.74rem; }
+      .cred-grid { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .stat-row { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+      .stat-num { font-size: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .stat-row { grid-template-columns: 1fr; }
+      .nav-links { gap: 0.6rem; }
+      .nav-links a { font-size: 0.68rem; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-tag  { animation: fadeUp 0.45s ease both 0.1s; }
+    h1         { animation: fadeUp 0.45s ease both 0.2s; }
+    .page-intro { animation: fadeUp 0.45s ease both 0.32s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">RKA</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="frameworks.html">Frameworks</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-bg"></div>
+    <div class="page-header-inner">
+      <div class="page-tag">Professional Profile</div>
+      <h1>Richard Kudjo <span>Akrong</span></h1>
+      <p class="page-intro">
+        Technical Managing Director. Industrial automation engineer. Independent expert consultant.
+        Over 15 years building, securing, and optimizing critical infrastructure
+        across four continents.
+      </p>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">Professional Summary</div>
+      <h2>Engineering Expertise at Industrial Scale</h2>
+      <div class="summary-block">
+        <p>
+          Richard Kudjo Akrong is an electrical engineer and industrial automation specialist
+          with over 15 years of field experience in critical infrastructure protection.
+          As <strong>former Technical Managing Director at Casabeck Engineering Services</strong>,
+          he led 28 projects across 13 countries, with significant deployments in food and
+          beverage manufacturing, edible oil processing, and SCADA-controlled industrial systems.
+        </p>
+        <p>
+          His work spans PLC, SCADA, and DCS system design, Industrial IoT integration,
+          renewable energy and microgrid engineering, and cybersecurity architecture for
+          operational technology environments. He developed two proprietary frameworks,
+          AOMS and ICM, designed to improve operational reliability and accelerate
+          Industry 4.0 adoption in U.S. food manufacturing infrastructure.
+        </p>
+        <p>
+          He holds IEEE Senior Member and ISA Senior Member status alongside IECEx and OSHA certifications.
+          He serves as a peer reviewer for ISA Transactions (Elsevier) and as a judge
+          for the Virginia State Science and Engineering Fair, reflecting his commitment
+          to advancing the U.S. engineering knowledge base.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section style="padding-top: 0;">
+    <div class="section-inner">
+      <div class="section-label">Credentials &amp; Memberships</div>
+      <h2>Professional Standing</h2>
+      <div class="cred-grid">
+        <div class="cred-card">
+          <span class="cred-icon">IEEE</span>
+          <div class="cred-text">
+            <strong>IEEE Senior Member</strong>
+            <span>Top 10% of global IEEE membership, requiring documented qualifications, verified experience, and peer assessment.</span>
+          </div>
+        </div>
+        <div class="cred-card">
+          <span class="cred-icon">ISA</span>
+          <div class="cred-text">
+            <strong>ISA Senior Member</strong>
+            <span>International Society of Automation senior designation, with active peer reviewer status at ISA Transactions (Impact Factor 7.51, Q1).</span>
+          </div>
+        </div>
+        <div class="cred-card">
+          <span class="cred-icon">IEC</span>
+          <div class="cred-text">
+            <strong>IECEx Competency Certification</strong>
+            <span>Ex d, Ex de, Ex e, Ex &mdash; internationally recognized for hazardous area electrical systems, with confirmed technical equivalence to NFPA 70 Articles 500 through 516.</span>
+          </div>
+        </div>
+        <div class="cred-card">
+          <span class="cred-icon">OSH</span>
+          <div class="cred-text">
+            <strong>OSHA 30-Hour Electrical Safety</strong>
+            <span>U.S.-specific occupational safety certification covering industrial workplace standards and electrical hazard compliance.</span>
+          </div>
+        </div>
+        <div class="cred-card">
+          <span class="cred-icon">NFP</span>
+          <div class="cred-text">
+            <strong>NFPA Professional Member</strong>
+            <span>National Fire Protection Association membership, reflecting alignment with U.S. electrical and fire safety codes governing industrial environments.</span>
+          </div>
+        </div>
+        <div class="cred-card">
+          <span class="cred-icon">PLC</span>
+          <div class="cred-text">
+            <strong>PLC/SCADA Certifications</strong>
+            <span>Platform certifications for Siemens S7-1500 / WinCC and Allen-Bradley ControlLogix / CompactLogix &mdash; the dominant platforms in U.S. food manufacturing.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL FOOTPRINT -->
+  <section class="footprint-section">
+    <div class="section-inner">
+      <div class="section-label">Global Footprint</div>
+      <h2>Field Experience Across Four Continents</h2>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Years of Engineering Experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">28</div>
+          <div class="stat-label">Industrial Projects Completed</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">13</div>
+          <div class="stat-label">Countries of Deployment</div>
+        </div>
+      </div>
+      <div class="country-list">
+        <span class="country-tag">Nigeria</span>
+        <span class="country-tag">Ghana</span>
+        <span class="country-tag">Malaysia</span>
+        <span class="country-tag">Indonesia</span>
+        <span class="country-tag">South Africa</span>
+        <span class="country-tag">Kenya</span>
+        <span class="country-tag">Uganda</span>
+        <span class="country-tag">Tanzania</span>
+        <span class="country-tag">Senegal</span>
+        <span class="country-tag">Cameroon</span>
+        <span class="country-tag">Ivory Coast</span>
+        <span class="country-tag">Zambia</span>
+        <span class="country-tag">United States</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">Career Timeline</div>
+      <h2>Professional Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">2010 &mdash; 2018</div>
+          <div class="timeline-role">Electrical &amp; Instrumentation Engineer &rarr; Head of Electrical Instrumentation and Process Automation</div>
+          <div class="timeline-org">GSFIL / Wilmar Africa Ltd</div>
+          <div class="timeline-desc">
+            Joined as an entry-level engineer and earned successive promotions: Electrical and
+            Instrumentation Supervisor (2012), Electrical and Instrumentation Manager (2014),
+            and Head of Electrical Instrumentation and Process Automation (2018), overseeing
+            regional operations across six African countries. This is where the AOMS and ICM
+            frameworks were first developed and validated in food processing environments.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2018 &mdash; 2024</div>
+          <div class="timeline-role">Regional Electrical, Instrumentation and Process Automation Manager</div>
+          <div class="timeline-org">West &amp; North Africa / Wilmar International</div>
+          <div class="timeline-desc">
+            Provided technical leadership across 14 food and beverage manufacturing facilities
+            in West and North Africa. All performance outcomes were measured, documented, and
+            reported through Finance Department audits and external auditors. Deployed AOMS
+            and ICM frameworks across the full 14-facility network, achieving OEE of 87%,
+            40 to 45% downtime reduction, $1.25 million in annual energy savings, and
+            training of more than 60 engineers and technicians.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Former Role</div>
+          <div class="timeline-role">Technical Managing Director</div>
+          <div class="timeline-org">Casabeck Engineering Services</div>
+          <div class="timeline-desc">
+            Led electrical engineering and industrial automation projects across Africa
+            and Southeast Asia. Responsible for PLC/SCADA/DCS system design, IIoT integration,
+            project delivery, and client technical advisory across 28 completed engagements.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Ongoing</div>
+          <div class="timeline-role">Peer Reviewer</div>
+          <div class="timeline-org">ISA Transactions, Elsevier (Impact Factor 7.51, Q1)</div>
+          <div class="timeline-desc">
+            Serving as an invited peer reviewer for ISA Transactions, one of the highest-ranked
+            journals in industrial automation. Assigned manuscripts cover advanced control systems,
+            multimodal data processing, and autonomous systems. Confirmed by Elsevier
+            Certificate of Reviewing.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-role">Science Fair Judge</div>
+          <div class="timeline-org">Prince William-Manassas Regional Fair &amp; Virginia State Science and Engineering Fair</div>
+          <div class="timeline-desc">
+            Evaluated student engineering projects at both regional and state levels in Virginia,
+            contributing to U.S. STEM development. Certificate of Appreciation issued by
+            Dr. Jerry Putt for the regional fair (March 2026). Registered judge at the
+            Virginia State Science and Engineering Fair (April 2026).
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section style="padding-top: 0;">
+    <div class="section-inner">
+      <div class="section-label">Education</div>
+      <h2>Academic Background</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-degree">MSc, Information Technology</div>
+          <div class="edu-school">American National University &mdash; Salem Campus</div>
+          <div class="edu-detail">
+            Candidate. Thesis research on explainable AI for SCADA cybersecurity
+            in critical infrastructure protection. Directly extends field practice
+            into academic research on one of the most pressing gaps in U.S.
+            industrial security.
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">BSc, Electrical &amp; Electronic Engineering</div>
+          <div class="edu-school">Undergraduate Degree</div>
+          <div class="edu-detail">
+            Foundational qualification in electrical and electronic engineering,
+            underpinning over 15 years of applied practice in industrial automation,
+            control systems, and critical infrastructure engineering.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE -->
+  <section style="padding-top: 0; padding-bottom: 5rem;">
+    <div class="section-inner">
+      <div class="section-label">Professional Service</div>
+      <h2>Contributions Beyond the Project Site</h2>
+      <div class="service-list">
+        <div class="service-item">
+          <span class="service-tag">REVIEW</span>
+          <div class="service-text">
+            <strong>Peer Reviewer &mdash; ISA Transactions (Elsevier)</strong>
+            <span>
+              Invited to review manuscripts in industrial automation and control systems.
+              This role places Richard at the evaluation stage of the academic publication process,
+              directly shaping what advances the field's published knowledge.
+              Confirmed by Elsevier Certificate of Reviewing.
+            </span>
+          </div>
+        </div>
+        <div class="service-item">
+          <span class="service-tag">JUDGE</span>
+          <div class="service-text">
+            <strong>Science Fair Judge &mdash; Virginia State Science and Engineering Fair</strong>
+            <span>
+              Evaluates student projects at the regional science and engineering fair.
+              Reflects an active investment in growing the next generation of U.S.
+              engineering talent. Confirmed by official Certificate of Appreciation.
+            </span>
+          </div>
+        </div>
+        <div class="service-item">
+          <span class="service-tag">PUBLISH</span>
+          <div class="service-text">
+            <strong>Academic Author &mdash; IJISRT &amp; GJET</strong>
+            <span>
+              Published two peer-reviewed papers in 2025 with a combined citation count
+              of 18 across both journals, demonstrating rapid uptake by the research community.
+              Additional manuscripts under review at IEEE Transactions on Industrial Informatics
+              and ISA Transactions.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE NAVIGATION -->
+  <div class="page-nav">
+    <div class="page-nav-inner">
+      <a href="index.html">&#8592; Home</a>
+      <a href="frameworks.html">AOMS &amp; ICM Frameworks &#8594;</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Richard Kudjo Akrong &nbsp;|&nbsp; Former Technical Managing Director, Casabeck Engineering Services
+      &nbsp;|&nbsp; <a href="contact.html">Contact</a></p>
+    <p style="margin-top:0.5rem; font-size: 0.7rem; opacity: 0.5;">
+      Woodbridge, Virginia, USA
+    </p>
+  </footer>
+
+</body>
+</html>
